@@ -1,6 +1,7 @@
 from collections import Counter
 from functools import reduce
 
+
 def _is_multiple_of_any(x, numbers):
     return any((x % number == 0 for number in numbers))
 
@@ -51,3 +52,12 @@ def gcd(a, b):
 def lcm(a, b):
     return int(abs(a*b)/gcd(a, b))
 
+
+def generate_primes(count):
+    counter = 1
+    number = 2
+    while counter <= count:
+        if is_prime(number):
+            counter += 1
+            yield number
+        number += 1
