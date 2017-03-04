@@ -1,3 +1,6 @@
+from collections import Counter
+from functools import reduce
+
 def _is_multiple_of_any(x, numbers):
     return any((x % number == 0 for number in numbers))
 
@@ -35,3 +38,16 @@ def factorize(number):
 
 def is_palindrome(value):
     return str(value) == str(value)[::-1]
+
+
+def gcd(a, b):
+    a_count = Counter(factorize(a))
+    b_count = Counter(factorize(b))
+    gcd_counter = {x: min((a_count[x], b_count[x])) for x in a_count}
+    gcd_counter[1] = 1
+    return reduce(lambda a, b: a*b, (x ** gcd_counter[x] for x in gcd_counter))
+
+
+def lcm(a, b):
+    return int(abs(a*b)/gcd(a, b))
+
