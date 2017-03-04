@@ -11,3 +11,24 @@ def fibonacci_gen(limit):
     while b < limit:
         yield b
         a, b = b, a + b
+
+
+def is_prime(number):
+    if number < 2:
+        return False
+    for i in range(2, int(number ** 0.5 + 1)):
+        if number % i == 0:
+            return False
+    return True
+
+
+def factorize(number):
+    factors = []
+    while number != 1:
+        for i in range(2, number+1):
+            if number % i == 0:
+                factors.append(i)
+                number = int(number/i)
+                break
+    return factors
+
