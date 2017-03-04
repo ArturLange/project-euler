@@ -32,3 +32,6 @@ def factorize(number):
                 break
     return factors
 
+
+def is_palindrome(value):
+    return str(value) == str(value)[::-1]
